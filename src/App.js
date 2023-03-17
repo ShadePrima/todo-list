@@ -1,7 +1,9 @@
 import React from 'react';
-import AddList from './components/AddList/AddList';
 
+import AddList from './components/AddList/AddList';
 import List from './components/List/List';
+
+import DB from './assets/db.json';
 
 function App() {
   return (
@@ -25,7 +27,7 @@ function App() {
                 </svg>
               ),
               name: 'All tasks',
-              active: true,
+              active: false,
             },
           ]}
           isRemovable
@@ -52,7 +54,7 @@ function App() {
           isRemovable
         />
 
-        <AddList />
+        <AddList colors={DB.colors} />
       </div>
 
       <div className='todo__tasks'></div>
