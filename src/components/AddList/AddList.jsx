@@ -9,6 +9,15 @@ import './AddList.scss';
 const AddList = ({ colors }) => {
   const [visiblePopup, setVisiblePopup] = React.useState(false);
   const [selectedColor, setSelectedColor] = React.useState(colors[0]);
+  const [inputValue, setInputValue] = React.useState('');
+
+  const addList = () => {
+    console.log({
+      id: 1,
+      name: 'Sales',
+      colorId: 5,
+    });
+  };
 
   return (
     <div className='add-list'>
@@ -53,7 +62,15 @@ const AddList = ({ colors }) => {
             src={closeSvg}
             alt='close Button'
           ></img>
-          <input className='field' type='text' placeholder='List title' />
+
+          <input
+            className='field'
+            value={inputValue}
+            onChange={(event) => setInputValue(event.target.value)}
+            type='text'
+            placeholder='List title'
+          />
+
           <div className='add-list__popup-colors'>
             {colors.map((color) => (
               <Badge
@@ -64,7 +81,9 @@ const AddList = ({ colors }) => {
               />
             ))}
           </div>
-          <button className='button'>Add List</button>
+          <button onClick={addList} className='button'>
+            Add List
+          </button>
         </div>
       )}
     </div>
