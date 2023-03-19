@@ -6,17 +6,32 @@ import closeSvg from '../../assets/img/close.svg';
 
 import './AddList.scss';
 
-const AddList = ({ colors }) => {
+const AddList = ({ colors, onAdd }) => {
   const [visiblePopup, setVisiblePopup] = React.useState(false);
   const [selectedColor, setSelectedColor] = React.useState(colors[0]);
   const [inputValue, setInputValue] = React.useState('');
 
+  const onClose = () => {
+    setVisiblePopup(false);
+    setInputValue('');
+    setSelectedColor(colors[0].id);
+  };
+
   const addList = () => {
-    console.log({
-      id: 1,
-      name: 'Sales',
-      colorId: 5,
+    if (!inputValue) {
+      alert('You cannot add empty value');
+      return;
+    }
+
+    const color = colors.filter((c) => c.id === selectedColor)[0].name;
+
+    onAdd({
+      id: Math.random(),
+      name: inputValue,
+      color: color,
     });
+
+    onClose();
   };
 
   return (
@@ -57,7 +72,7 @@ const AddList = ({ colors }) => {
       {visiblePopup && (
         <div className='add-list__popup'>
           <img
-            onClick={() => setVisiblePopup(false)}
+            onClick={onClose}
             className='add-list__popup-close-btn'
             src={closeSvg}
             alt='close Button'
