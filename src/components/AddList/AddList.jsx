@@ -17,6 +17,11 @@ const AddList = ({ colors, onAdd }) => {
     setSelectedColor(colors[0].id);
   };
 
+  const onOpen = () => {
+    setVisiblePopup(!visiblePopup);
+    setSelectedColor(1);
+  };
+
   const addList = () => {
     if (!inputValue) {
       alert('You cannot add empty value');
@@ -37,7 +42,7 @@ const AddList = ({ colors, onAdd }) => {
   return (
     <div className='add-list'>
       <List
-        onClick={() => setVisiblePopup(!visiblePopup)}
+        onClick={onOpen}
         items={[
           {
             className: 'list__add-button',
