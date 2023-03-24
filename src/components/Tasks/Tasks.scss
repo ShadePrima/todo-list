@@ -26,19 +26,24 @@
   }
 
   &__items {
+    margin-top: 30px;
+
     &-row {
       display: flex;
       align-items: center;
 
-      p {
-        font-size: 15px;
+      input {
         margin-left: 15px;
+        font-size: 16px;
+        border: 0;
+        width: 100%;
       }
     }
   }
 
   .checkbox {
     svg {
+      transition: opacity 0.15s ease-in-out;
       path {
         stroke: #f2f2f2;
       }
@@ -67,8 +72,11 @@
       justify-content: center;
       border: 2px solid #e8e8e8;
       border-radius: 30px;
+      transition: background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out;
       width: 20px;
       height: 20px;
+
       cursor: pointer;
 
       svg {
